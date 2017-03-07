@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
     if (err) {
       return next(err);
     }
+
     res.render('index', { birds: birds });
   })
 });
@@ -87,10 +88,22 @@ router.post('/addDate', function(req, res, next){
 
     if (!bird) {
       res.statusCode = 404;
-      return next(new Error('Not found, bird with _id ' + req.body._id))
+      return next(new Error('Not found, bird with _id ' + req.body._id));
     }
 
+    console.log('date saved = ' + req.body.dateSeen);
+
     bird.datesSeen.push(req.body.dateSeen);  // Add new date to datesSeen array
+
+    console.log(bird.datesSeen)
+
+    // And sort datesSeen
+    bird.datesSeen.sort(function(a, b) {
+      if (a.getTime() < b.getTime()) { return 1;  }
+      if (a.getTime() > b.getTime()) { return -1; }
+      return 0;
+    });
+
 
     bird.save(function(err){
       if (err) {

@@ -7,9 +7,12 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var flash = require('express-flash');
 var session = require('express-session');
+var hbs = require('express-handlebars');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+var hbshelpsers = require('./hbshelpers/helpers');
 
 var mongo_pw = process.env.MONGO_PW;
 var url = 'mongodb://admin:' + mongo_pw + '@localhost:27017/birds?authSource=admin';
@@ -22,6 +25,11 @@ app.use(flash());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.engine('.hbs', hbs({
+  extname:'.hbs',
+  defaultLayout: 'layout',
+  helpers: hbshelpsers
+}));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
