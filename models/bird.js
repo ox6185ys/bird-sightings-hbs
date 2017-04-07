@@ -10,10 +10,11 @@ var birdSchema = new mongoose.Schema({
   threatened: { type: Boolean, default: false },   // Is species endangered?
   datesSeen: [ { type: Date, default: Date.now, validate: {
     validator : function(date) {
-    //return false if date is in the future
+    //return false if date is in the future.  From helpers.js
       return (date.getTime() < Date.now()) ; //time is less than now, in past
     }, message: '{VALUE} is not a valid sighting date. Date must be in the past'
   }} ],
+    // Square bracket creates an array
   nest: { location: String, materials: String }
 });
 

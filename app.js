@@ -15,7 +15,7 @@ var users = require('./routes/users');
 var hbshelpsers = require('./hbshelpers/helpers');
 
 var mongo_pw = process.env.MONGO_PW;
-var url = 'mongodb://admin:' + mongo_pw + '@localhost:27017/birds?authSource=admin';
+var url = 'mongodb://localhost:27017/birds';
 mongoose.connect(url);
 
 var app = express();
@@ -31,7 +31,7 @@ app.engine('.hbs', hbs({
   helpers: hbshelpsers
 }));
 app.set('view engine', 'hbs');
-
+console.log(app.get('views'));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

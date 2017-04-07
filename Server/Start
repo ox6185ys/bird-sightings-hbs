@@ -1,0 +1,8 @@
+load npm: npm install
+start database: mongod --dbpath ..\data
+start server: npm start or bin\wwww click and run
+
+Week11:
+Client-side validation is far more important! Slide 30
+Mongoose validation
+

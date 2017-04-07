@@ -46,10 +46,11 @@
     {{/if}}
 
     <p>Dates seen:</p>
+
     <ul>
     {{#each this.datesSeen}}
       <li>
-        {{dateFormatter this}}
+        {{dateFormatter this}} <!--dateFormatter is a helper from hbshelpers/helpers.js   "this" is the parameter.-->
       </li>
       <li>{{this}}</li>
     {{else}}
@@ -66,7 +67,7 @@
       <input name="add" type="submit" value="Add new date">
     </form>
 
-    <hr>
+      <hr>
 
   {{else}}
     <p>No bird records in the database</p>
