@@ -25,7 +25,7 @@
     <br>
     Date seen: <input name="dateSeen" type="datetime-local">
     <br>
-    <input name="addBird" type="submit" value="Add new sighting">
+    <input name="addBird" type="submit" value="Add new sighting"><!--This is the submit button-->
     <br>
   </form>
 
@@ -66,8 +66,33 @@
       <input name="name" type="hidden" value="{{this.name}}">
       <input name="add" type="submit" value="Add new date">
     </form>
+<br>
+
+  <!--Inside the form  This is the removeRecord button.-->
+      <!--<form action="/removeRecord" method="POST">-->
+          <!--&lt;!&ndash;<input name="dateSeen" type="datetime-local" required>&ndash;&gt;-->
+          <!--<input name="_id" type="hidden" value="{{this._id}}">-->
+          <!--<input name="name" type="hidden" value="{{this.name}}">-->
+          <!--<input name="add" type="submit" value="Remove Record">-->
+      <!--</form>-->
+
+      <!--<h2>Delete A Flower</h2>-->
+      <!--<form action="/deleteFlower" method="POST">-->
+          <!--Name <input type="text" name="name" placeholder="Name" required><br>-->
+          <!--<br>-->
+          <!--<button type="submit">Delete</button>-->
+      <!--</form>-->
+<br>
+      <form class="delete_form" action="/delete" method="POST">
+          <input type="hidden" name="_id" value="{{this._id}}">
+          <input class="delete_button" type="submit" name="delete" value="Delete">
+      </form>
+
 
       <hr>
+
+
+
 
   {{else}}
     <p>No bird records in the database</p>

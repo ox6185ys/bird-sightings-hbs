@@ -123,6 +123,22 @@ router.post('/addDate', function(req, res, next){
     })
   });
 });
+//This is where delete is saved
 
+router.post('/delete', function(req, res,next){
+
+    var id = req.body._id;
+
+    Bird.findByIdAndRemove(id, function(err){
+
+        if (err) {
+            return next(err);    // For database errors
+        }
+
+        req.flash('info', 'Deleted');
+        return res.redirect('/')
+
+    })
+});
 
 module.exports = router;
